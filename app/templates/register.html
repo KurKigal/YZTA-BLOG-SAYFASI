@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1 class="auth-title">Kayıt Ol</h1>
+            <p class="auth-subtitle">Hesap oluşturun ve topluluğumuza katılın</p>
+        </div>
+
+        <form method="POST" class="auth-form">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="username" class="form-label">Kullanıcı Adı</label>
+                {{ form.username(class="form-input", placeholder="kullanici_adi") }}
+                {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                <span class="form-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">E-posta</label>
+                {{ form.email(class="form-input", placeholder="ornek@email.com") }}
+                {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                <span class="form-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Şifre</label>
+                {{ form.password(class="form-input", placeholder="En az 6 karakter") }}
+                {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                <span class="form-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirm" class="form-label">Şifre Tekrar</label>
+                {{ form.password_confirm(class="form-input", placeholder="Şifrenizi tekrar girin") }}
+                {% if form.password_confirm.errors %}
+                {% for error in form.password_confirm.errors %}
+                <span class="form-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full">Kayıt Ol</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Zaten hesabınız var mı? <a href="{{ url_for('login') }}">Giriş yapın</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

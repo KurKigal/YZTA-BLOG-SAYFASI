@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="editor-container">
+    <form method="POST" class="editor-form">
+        {{ form.hidden_tag() }}
+
+        <div class="editor-header">
+            <h1 class="editor-title">Yeni Yazı</h1>
+        </div>
+
+        <div class="form-group">
+            {{ form.title(class="form-input editor-title-input", placeholder="Başlık") }}
+            {% if form.title.errors %}
+            {% for error in form.title.errors %}
+            <span class="form-error">{{ error }}</span>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.content(class="form-input editor-content-input", placeholder="Hikayenizi anlatın...", rows=20) }}
+            {% if form.content.errors %}
+            {% for error in form.content.errors %}
+            <span class="form-error">{{ error }}</span>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="editor-options">
+            <div class="form-group">
+                <label for="category" class="form-label">Kategori</label>
+                {{ form.category(class="form-select") }}
+            </div>
+
+            <div class="form-group form-checkbox">
+                {{ form.allow_comments(class="checkbox-input") }}
+                <label for="allow_comments" class="checkbox-label">Yorumlara izin ver</label>
+            </div>
+        </div>
+
+        <div class="editor-actions">
+            <a href="{{ url_for('index') }}" class="btn btn-outline">İptal</a>
+            <button type="submit" class="btn btn-primary">Yayınla</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
