@@ -295,6 +295,9 @@ img {
     background: #b43d3d;
 }
 
+.btn-del {
+    height: 35px;
+}
 .btn-sm {
     padding: 6px 12px;
     font-size: 0.8125rem;
@@ -1004,7 +1007,7 @@ img {
    EDITOR PAGE
    ============================================ */
 .editor-container {
-    max-width: 800px;
+    max-width: 50%;
     margin: 0 auto;
     padding: 48px 24px;
 }
@@ -1021,7 +1024,7 @@ img {
 .editor-form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 .editor-title-input {
@@ -1045,15 +1048,18 @@ img {
     font-family: var(--font-serif);
     font-size: 1.125rem;
     line-height: 1.8;
-    border: none;
-    padding: 0;
-    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    background: var(--bg-primary);
     resize: vertical;
-    min-height: 400px;
+    min-height: 300px;
+    max-height: 500px;
+    border-radius: var(--radius-md);
 }
 
 .editor-content-input:focus {
-    box-shadow: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(105, 23, 137, 0.1);
 }
 
 .editor-content-input::placeholder {
@@ -1064,7 +1070,9 @@ img {
     display: flex;
     gap: 24px;
     flex-wrap: wrap;
-    padding: 24px;
+    align-items: center;
+    padding: 20px 24px;
+    align-items: center;
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
 }
@@ -1072,6 +1080,8 @@ img {
 .editor-options .form-group {
     flex: 1;
     min-width: 200px;
+    margin-bottom: 0;
+    
 }
 
 .editor-actions {
@@ -1084,9 +1094,13 @@ img {
    POST DETAIL PAGE
    ============================================ */
 .post-detail {
-    max-width: 740px;
+    max-width: 50%;
     margin: 0 auto;
-    padding: 48px 24px;
+    margin-top: 20px;
+    padding: 48px 40px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
 }
 
 .post-header {
@@ -1112,6 +1126,7 @@ img {
 
 .author-info {
     display: flex;
+    justify-content: start;
     align-items: center;
     gap: 12px;
 }
@@ -1142,6 +1157,7 @@ img {
 .post-actions {
     display: flex;
     gap: 8px;
+
 }
 
 .inline-form {
@@ -1154,10 +1170,13 @@ img {
     font-size: 1.25rem;
     line-height: 1.8;
     color: var(--text-primary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .post-content p {
     margin-bottom: 1.5em;
+    white-space: pre-wrap;
 }
 
 .post-content h2 {
@@ -1256,9 +1275,12 @@ img {
    COMMENTS SECTION
    ============================================ */
 .comments-section {
-    max-width: 740px;
-    margin: 0 auto;
-    padding: 0 24px 48px;
+    max-width: 50%;
+    margin: 32px auto 0;
+    padding: 32px 40px 48px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
 }
 
 .comments-title {
@@ -1366,7 +1388,7 @@ img {
    PROFILE PAGE
    ============================================ */
 .profile-container {
-    max-width: 800px;
+    max-width: 50%;
     margin: 0 auto;
     padding: 48px 24px;
 }
@@ -1494,9 +1516,34 @@ img {
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
+    .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+    .profile-container {
+    max-width: 90%;
+
+}
+    .post-detail {
+        max-width: 95%;
+        padding: 24px 20px;
+    }
+    
+    .comments-section {
+        max-width: 95%;
+        padding: 24px 20px;
+    }
+    
+    .editor-container {
+        max-width: 90%;
+    }
+    
     .posts-list {
         grid-template-columns: 1fr;
     }
+    
     .nav-container {
         flex-wrap: wrap;
     }
