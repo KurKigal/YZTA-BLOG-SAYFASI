@@ -710,13 +710,15 @@ img {
     color: #A25A10;
 }
 
-.pill[data-category="Yaşam"] {
+.pill[data-category="Yaşam"],
+.pill[data-category="Yasam"] {
     background: #FFE0E8;
     color: #A23B62;
 }
 
+
 .pill[data-category="Sağlık"],
-.pill[data-category="Sağlık"] {
+.pill[data-category="Saglik"] {
     background: #DCF7E6;
     color: #1F7A4C;
 }
@@ -725,7 +727,8 @@ img {
     background: #FFE6D4;
     color: #A04622;
 }
-.pill[data-category="Yazılım"] {
+.pill[data-category="Yazılım"],
+.pill[data-category="Yazilim"] {
     background: rgb(195, 195, 195);
     color: rgb(66, 66, 66);
 }
