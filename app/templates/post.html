@@ -6,19 +6,22 @@
         <h1 class="post-detail-title">{{ post.title }}</h1>
 
         <div class="post-detail-meta">
-            <a href="{{ url_for('user_profile', username=post.author.username) }}" class="author-info">
-                <div class="avatar">{{ post.author.username[0].upper() }}</div>
-                <div class="author-details">
-                    <span class="author-name">{{ post.author.username }}</span>
-                    <span class="post-info">
-                        <time>{{ post.date_posted.strftime('%d %B %Y') }}</time>
-                        {% if post.category %}
-                        · <a href="{{ url_for('category_posts', category_id=post.category.id) }}"
-                            class="category-link">{{ post.category.name }}</a>
-                        {% endif %}
-                    </span>
-                </div>
-            </a>
+            <div class="author-info">
+                <a href="{{ url_for('user_profile', username=post.author.username) }}">
+                                <div class="avatar">{{ post.author.username[0].upper() }}</div>
+                                <div class="author-details">
+                                    <span class="author-name">{{ post.author.username }}</span>
+                                    <span class="post-info">
+                                        <time>{{ post.date_posted.strftime('%d %B %Y') }}</time>
+                                        {% if post.category %}
+                                        · <a href="{{ url_for('category_posts', category_id=post.category.id) }}"
+                                            class="category-link">{{ post.category.name }}</a>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            </a>
+            </div>
+            
 
             {% if current_user.is_authenticated and current_user == post.author %}
             <div class="post-actions">
@@ -31,7 +34,7 @@
                 </a>
                 <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" class="inline-form"
                     onsubmit="return confirm('Bu yazıyı silmek istediğinizden emin misiniz?')">
-                    <button type="submit" class="btn btn-danger btn-sm">
+                    <button type="submit" class="btn btn-danger btn-sm btn-del">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="3 6 5 6 21 6"></polyline>
@@ -125,6 +128,7 @@
     {% endif %}
 
     <!-- Yorum Listesi -->
+    {% if post.allow_comments %}
     <div class="comments-list">
         {% for comment in comments %}
         <div class="comment">
@@ -153,5 +157,6 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
 </section>
 {% endblock %}
