@@ -139,12 +139,12 @@
             <div class="sidebar-section">
                 <h3 class="sidebar-title">Popüler Yazarlar</h3>
                 <div class="popular-posts">
-                    {% for post in posts.items[:3] %}
-                    <a href="{{ url_for('post_detail', post_id=post.id) }}" class="popular-post">
-                        <span class="popular-rank">{{ post.author.username[0].upper()}}</span>
+                    {% for author, total_likes in popular_authors %}
+                    <a href="{{ url_for('user_profile', username=author.username) }}" class="popular-post">
+                        <span class="popular-rank">{{ author.username[0].upper() }}</span>
                         <div class="popular-info">
-                            <span class="popular-title">{{ post.author.username }}</span>
-                            <span class="popular-author"> {{ post.author.posts.count() }} Yazı</span>
+                            <span class="popular-title">{{ author.username }}</span>
+                            <span class="popular-author">{{ total_likes }} Beğeni</span>
                         </div>
                     </a>
                     {% endfor %}
