@@ -1,3 +1,5 @@
 flask
 flask-sqlalchemy
 flask-login
+flask_migrate
+flask_wtf
