@@ -4,21 +4,21 @@
 
 ## 📋 İçindekiler
 
-- [Proje Hakkında]
+- Proje Hakkında
     
-- [Özellikler]
+- Özellikler
     
-- [Teknoloji Yığını]
+- Teknoloji Yığını
     
-- [Sistem Mimarisi ve Akış]
+- Sistem Mimarisi ve Akış
     
-- [Kurulum ve Çalıştırma]
+- Kurulum ve Çalıştırma
     
-- [Proje Yapısı]
+- Proje Yapısı
     
-- [Ekran Görüntüleri]
+- Ekran Görüntüleri
     
-- [Ekip]
+- Ekip
     
 
 ---
@@ -145,7 +145,8 @@ Projemiz **Factory Pattern** yapısına uygun olarak modüler bir şekilde tasar
 
 ### 1. Ana Sayfa
 
-![Uploading Screenshot 2026-02-04 at 11.57.41.png…]()
+<img width="1457" height="795" alt="Screenshot 2026-02-04 at 11 57 41" src="https://github.com/user-attachments/assets/9c022cc4-4d0f-4f9d-82fe-64ecbf2c0b40" />
+
 
 
 ### 2. Yazı Oluşturma Paneli
