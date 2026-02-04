@@ -20,7 +20,20 @@ def init_app(app):
             page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False
         )
         categories = Category.query.order_by(Category.name).all()
-        return render_template('index.html', title='Ana Sayfa', posts=posts, categories=categories)
+
+        # Popüler yazarları like'a göre sıralayalım
+        popular_authors = db.session.query(
+            User, 
+            db.func.count(PostLike.id).label('total_likes')
+        ).join(Post, User.id == Post.user_id)\
+         .join(PostLike, Post.id == PostLike.post_id)\
+         .group_by(User.id)\
+         .order_by(db.desc('total_likes'))\
+         .limit(3)\
+         .all()
+
+        return render_template('index.html', title='Ana Sayfa', posts=posts, 
+                             categories=categories, popular_authors=popular_authors)
     
     # ==================== KATEGORİ FİLTRELEME ====================
     @app.route('/category/<int:category_id>')
@@ -31,8 +44,21 @@ def init_app(app):
             Post.date_posted.desc()
         ).paginate(page=page, per_page=current_app.config['POSTS_PER_PAGE'], error_out=False)
         categories = Category.query.order_by(Category.name).all()
+        
+        # Popüler yazarları like'a göre sıralayalım
+        popular_authors = db.session.query(
+            User, 
+            db.func.count(PostLike.id).label('total_likes')
+        ).join(Post, User.id == Post.user_id)\
+         .join(PostLike, Post.id == PostLike.post_id)\
+         .group_by(User.id)\
+         .order_by(db.desc('total_likes'))\
+         .limit(3)\
+         .all()
+        
         return render_template('index.html', title=category.name, posts=posts, 
-                             categories=categories, current_category=category)
+                             categories=categories, current_category=category, 
+                             popular_authors=popular_authors)
     
     # ==================== KAYIT ====================
     @app.route('/register', methods=['GET', 'POST'])
